@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Graphs from "./Graphs";
 import axios from "axios";
+import InteractionChart from "./InteractionChart";
 
 const Dashboard = () => {
   const [data, setdata] = useState([]);
@@ -27,6 +28,10 @@ const Dashboard = () => {
         setfilter={setfilter}
       ></FilterComponent>
       <Graphs data={data} filter={filter}></Graphs>
+      <InteractionChart
+        data={data}
+        filter_options={filter_options}
+      ></InteractionChart>
     </div>
   );
 };
