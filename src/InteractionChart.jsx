@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Scatter } from "react-chartjs-2";
 
 const InteractionChart = ({ data, filter_options }) => {
-  const [xLabel, setXLabel] = useState("x"); // Initial X label
-  const [yLabel, setYLabel] = useState("y"); // Initial Y label
+  const [xLabel, setXLabel] = useState(filter_options[0]); // Initial X label
+  const [yLabel, setYLabel] = useState(filter_options[0]); // Initial Y label
   const [yData, setYData] = useState([]);
   const [xData, setXData] = useState([]);
 
   // Filter distinct values for x and y labels from the data
   const xLabels = filter_options;
   const yLabels = filter_options;
-
+  useEffect(() => {
+    var new_xdata = [];
+    setXLabel(filter_options[0]);
+    setYLabel(filter_options[0]);
+    for (var i = 0; i < data.length; i++) {
+      new_xdata.push(data[i][filter_options[0]]);
+    }
+    setXData(new_xdata);
+    var new_ydata = [];
+    for (var i = 0; i < data.length; i++) {
+      new_ydata.push(data[i][filter_options[0]]);
+    }
+    setYData(new_ydata);
+    // console.log("from useeffect");
+    // console.log(new_xdata, new_ydata);
+  }, [data, filter_options]);
   const chartData = {
     datasets: [
       {
@@ -51,7 +66,7 @@ const InteractionChart = ({ data, filter_options }) => {
     for (var i = 0; i < data.length; i++) {
       new_xdata.push(data[i][e.target.value]);
     }
-    console.log(new_xdata);
+    // console.log(new_xdata);
     setXData(new_xdata);
   };
 
@@ -61,7 +76,7 @@ const InteractionChart = ({ data, filter_options }) => {
     for (var i = 0; i < data.length; i++) {
       new_ydata.push(data[i][e.target.value]);
     }
-    console.log(new_ydata);
+    // console.log(new_ydata);
     setYData(new_ydata);
   };
 
@@ -88,7 +103,7 @@ const InteractionChart = ({ data, filter_options }) => {
           ))}
         </select>
       </div>
-      <div>
+      <div style={{ width: "100%", height: "500px" }}>
         <Scatter data={chartData} options={options} />
       </div>
     </div>

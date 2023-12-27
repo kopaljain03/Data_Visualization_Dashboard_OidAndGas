@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import Graphs from "./Graphs";
 import axios from "axios";
 import InteractionChart from "./InteractionChart";
+import GeoChart from "./GeoChart";
 
 const Dashboard = () => {
   const [data, setdata] = useState([]);
   const [filter, setfilter] = useState("end_year");
   const [filter_options, setfilter_options] = useState([]);
+  const geo_filter_options = ["country", "region"];
   useEffect(() => {
     axios
       .get("../data/jsondata.json")
@@ -32,6 +34,12 @@ const Dashboard = () => {
         data={data}
         filter_options={filter_options}
       ></InteractionChart>
+
+      <GeoChart
+        data={data}
+        filter_options={filter_options}
+        geo_filter_options={geo_filter_options}
+      ></GeoChart>
     </div>
   );
 };
