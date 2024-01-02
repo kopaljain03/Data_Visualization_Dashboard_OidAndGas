@@ -35,6 +35,9 @@ const FilterData = ({ data, setdata }) => {
     });
     setFilters(initialFilters);
     setnewData(data);
+    const filteredData = newdata.filter((item) =>
+      Object.keys(item).every((key) => filters[key][item[key]])
+    );
   }, [data]);
 
   //   useEffect(() => {
@@ -55,12 +58,9 @@ const FilterData = ({ data, setdata }) => {
   };
 
   // Function to filter data based on checkboxes
-  const filteredData = newdata.filter((item) =>
-    Object.keys(item).every((key) => filters[key][item[key]])
-  );
 
   return (
-    <div>
+    <div style={{ alignContent: "center" }}>
       {filterArrays.map((filterObj, index) => {
         const key = Object.keys(filterObj)[0];
         return (

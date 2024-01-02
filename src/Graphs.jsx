@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import { CategoryScale } from "chart.js";
-import { filter } from "d3";
+import { autoType, filter } from "d3";
 Chart.register(CategoryScale);
 
 const Graphs = ({ data, filter }) => {
@@ -43,10 +43,16 @@ const Graph = ({ data, filter }) => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div
         className="chart-container"
-        style={{ width: "1000px", height: "700px" }}
+        style={{ width: "1000px", height: "700px", alignContent: "center" }}
       >
         <h2 style={{ textAlign: "center" }}>{filter}</h2>
         <Bar

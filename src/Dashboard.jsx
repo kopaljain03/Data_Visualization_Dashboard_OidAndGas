@@ -4,6 +4,8 @@ import axios from "axios";
 import InteractionChart from "./InteractionChart";
 import GeoChart from "./GeoChart";
 import FilterData from "./FilterData";
+import Navbar from "./Navbar";
+
 const Dashboard = () => {
   const [data, setdata] = useState([]);
   const [filter, setfilter] = useState("end_year");
@@ -30,6 +32,7 @@ const Dashboard = () => {
   }, []);
   return (
     <div>
+      {/* <Navbar></Navbar> */}
       {/* <FilterData data={data} setdata={setdata}></FilterData> */}
       <FilterComponent
         filter_options={filter_options}
@@ -62,7 +65,7 @@ const FilterComponent = ({ setfilter, filter_options }) => {
 
   return (
     <div>
-      <h2>Filter Component</h2>
+      <h2>Bar Graphs</h2>
       <label htmlFor="filterSelect">Select a Filter:</label>
       <select
         id="filterSelect"

@@ -81,30 +81,42 @@ const InteractionChart = ({ data, filter_options }) => {
   };
 
   return (
-    <div>
-      <h2>Interaction Chart</h2>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div>
-        <label htmlFor="xLabel">X Label:</label>
-        <select id="xLabel" onChange={handleXChange} value={xLabel}>
-          {xLabels.map((label) => (
-            <option key={label} value={label}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="yLabel">Y Label:</label>
-        <select id="yLabel" onChange={handleYChange} value={yLabel}>
-          {yLabels.map((label) => (
-            <option key={label} value={label}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div style={{ width: "100%", height: "500px" }}>
-        <Scatter data={chartData} options={options} />
+        <h2>Interaction Chart</h2>
+        <div>
+          <label htmlFor="xLabel">X Label:</label>
+          <select id="xLabel" onChange={handleXChange} value={xLabel}>
+            {xLabels.map((label) => (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="yLabel">Y Label:</label>
+          <select id="yLabel" onChange={handleYChange} value={yLabel}>
+            {yLabels.map((label) => (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div style={{}}>
+          <Scatter
+            data={chartData}
+            options={options}
+            style={{ width: "900px" }}
+          />
+        </div>
       </div>
     </div>
   );

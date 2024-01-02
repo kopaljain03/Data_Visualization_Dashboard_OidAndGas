@@ -1,3 +1,4 @@
+import { blurImage } from "d3";
 import React from "react";
 import { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
@@ -54,46 +55,53 @@ const GeoChart = ({ data, filter_options, geo_filter_options }) => {
   };
 
   return (
-    <div>
-      <h2>Geo Chart</h2>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div>
-        <label htmlFor="xLabel">X Label:</label>
-        <select id="xLabel" onChange={handleXChange} value={xLabel}>
-          {xLabels.map((label) => (
-            <option key={label} value={label}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="yLabel">Y Label:</label>
-        <select id="yLabel" onChange={handleYChange} value={yLabel}>
-          {yLabels.map((label) => (
-            <option key={label} value={label}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </div>
-      <Chart
-        chartEvents={[
-          {
-            eventName: "select",
-            callback: ({ chartWrapper }) => {
-              const chart = chartWrapper.getChart();
-              const selection = chart.getSelection();
-              if (selection.length === 0) return;
-              const region = data_arr[selection[0].row + 1];
-              console.log("Selected : " + region);
+        <h2>Geo Chart</h2>
+        <div>
+          <label htmlFor="xLabel">X Label:</label>
+          <select id="xLabel" onChange={handleXChange} value={xLabel}>
+            {xLabels.map((label) => (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="yLabel">Y Label:</label>
+          <select id="yLabel" onChange={handleYChange} value={yLabel}>
+            {yLabels.map((label) => (
+              <option key={label} value={label}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+        <Chart
+          chartEvents={[
+            {
+              eventName: "select",
+              callback: ({ chartWrapper }) => {
+                const chart = chartWrapper.getChart();
+                const selection = chart.getSelection();
+                if (selection.length === 0) return;
+                const region = data_arr[selection[0].row + 1];
+                console.log("Selected : " + region);
+              },
             },
-          },
-        ]}
-        chartType="GeoChart"
-        width="100%"
-        height="100%"
-        data={data_arr}
-      />
+          ]}
+          chartType="GeoChart"
+          width="900px"
+          data={data_arr}
+        />
+      </div>
     </div>
   );
 };
