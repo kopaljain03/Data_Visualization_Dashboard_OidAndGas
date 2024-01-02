@@ -5,6 +5,7 @@ import InteractionChart from "./InteractionChart";
 import GeoChart from "./GeoChart";
 import FilterData from "./FilterData";
 import Navbar from "./Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setdata] = useState([]);
@@ -32,50 +33,57 @@ const Dashboard = () => {
   }, []);
   return (
     <div>
-      {/* <Navbar></Navbar> */}
-      {/* <FilterData data={data} setdata={setdata}></FilterData> */}
-      <FilterComponent
-        filter_options={filter_options}
-        setfilter={setfilter}
-      ></FilterComponent>
-      <Graphs data={data} filter={filter}></Graphs>
-      <InteractionChart
-        data={data}
-        filter_options={filter_options}
-      ></InteractionChart>
+      <Router>
+        <Navbar></Navbar>
+        <Routes>
+          <Route
+            path="/graphs"
+            element={
+              <Graphs
+                data={data}
+                filter={filter}
+                filter_options={filter_options}
+                setfilter={setfilter}
+              ></Graphs>
+            }
+          />
+          <Route
+            path="/interactionchart"
+            element={
+              <InteractionChart
+                data={data}
+                filter_options={filter_options}
+              ></InteractionChart>
+            }
+          />
+          <Route
+            path="/geochart"
+            element={
+              <GeoChart
+                data={data}
+                filter_options={filter_options}
+                geo_filter_options={geo_filter_options}
+              ></GeoChart>
+            }
+          />
+        </Routes>
+        {/* <FilterData data={data} setdata={setdata}></FilterData> */}
+        {/* <FilterComponent
+          filter_options={filter_options}
+          setfilter={setfilter}
+        ></FilterComponent> */}
 
-      <GeoChart
-        data={data}
-        filter_options={filter_options}
-        geo_filter_options={geo_filter_options}
-      ></GeoChart>
-    </div>
-  );
-};
+        {/* <InteractionChart
+          data={data}
+          filter_options={filter_options}
+        ></InteractionChart>
 
-const FilterComponent = ({ setfilter, filter_options }) => {
-  const [selectedFilter, setSelectedFilter] = useState("");
-
-  const handleFilterChange = (e) => {
-    const selectedValue = e.target.value;
-    setSelectedFilter(selectedValue);
-    setfilter(selectedValue);
-    console.log(selectedValue);
-  };
-
-  return (
-    <div>
-      <h2>Bar Graphs</h2>
-      <label htmlFor="filterSelect">Select a Filter:</label>
-      <select
-        id="filterSelect"
-        value={selectedFilter}
-        onChange={handleFilterChange}
-      >
-        {filter_options.map((filter) => {
-          return <option value={filter}>{filter}</option>;
-        })}
-      </select>
+        <GeoChart
+          data={data}
+          filter_options={filter_options}
+          geo_filter_options={geo_filter_options}
+        ></GeoChart> */}
+      </Router>
     </div>
   );
 };

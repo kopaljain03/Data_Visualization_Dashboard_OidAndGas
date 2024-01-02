@@ -5,7 +5,7 @@ import { CategoryScale } from "chart.js";
 import { autoType, filter } from "d3";
 Chart.register(CategoryScale);
 
-const Graphs = ({ data, filter }) => {
+const Graphs = ({ data, filter, filter_options, setfilter }) => {
   console.log("from graph : " + filter);
   const [data_arr, setdata_arr] = useState([]);
   useEffect(() => {
@@ -23,6 +23,10 @@ const Graphs = ({ data, filter }) => {
   }
   return (
     <div>
+      <FilterComponent
+        filter_options={filter_options}
+        setfilter={setfilter}
+      ></FilterComponent>
       <Graph data={data_arr} filter={filter}></Graph>
     </div>
   );
@@ -69,6 +73,33 @@ const Graph = ({ data, filter }) => {
           }}
         />
       </div>
+    </div>
+  );
+};
+
+const FilterComponent = ({ setfilter, filter_options }) => {
+  const [selectedFilter, setSelectedFilter] = useState("");
+
+  const handleFilterChange = (e) => {
+    const selectedValue = e.target.value;
+    setSelectedFilter(selectedValue);
+    setfilter(selectedValue);
+    console.log(selectedValue);
+  };
+
+  return (
+    <div>
+      <h2>Bar Graphs</h2>
+      <label htmlFor="filterSelect">Select a Filter:</label>
+      <select
+        id="filterSelect"
+        value={selectedFilter}
+        onChange={handleFilterChange}
+      >
+        {filter_options.map((filter) => {
+          return <option value={filter}>{filter}</option>;
+        })}
+      </select>
     </div>
   );
 };

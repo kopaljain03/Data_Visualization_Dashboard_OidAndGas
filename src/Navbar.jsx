@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Navbar.css";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const Navbar = () => {
+function Navbar() {
+  const navigate = useNavigate();
+
   return (
-    <div className="navclass">
-      <ul class="nav">
-        <li>
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">About Us</a>
-        </li>
-        <li>
-          <a href="#">Services</a>
-        </li>
-        <li>
-          <a href="#">Products</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
-        </li>
-      </ul>
+    <div class="topnav">
+      <a class="active">Dashboard</a>
+      <a
+        onClick={() => {
+          navigate("/graphs");
+        }}
+      >
+        Bar Graphs
+      </a>
+      <a
+        onClick={() => {
+          navigate("/interactionchart");
+        }}
+      >
+        Interaction Charts
+      </a>
+      <a
+        onClick={() => {
+          navigate("/geochart");
+        }}
+      >
+        Geo Charts
+      </a>
     </div>
   );
-};
+}
 
 export default Navbar;
