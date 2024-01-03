@@ -2,14 +2,6 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-<h3 align="center">Data Visualization Dashboard</h3>
-
-</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -24,7 +16,6 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-       
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
@@ -41,10 +32,10 @@ This is a data visualization dashoboard app where in
 
 ### Built With
 
-- [![Flask][Flask.py]][Flask-url]
-- [![React][React.js]][React-url]
-- [![Material UI][]][]
-- [![SQLAlchemy][]][]
+- Flask
+- React
+- Material UI
+- SQLAlchemy
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
