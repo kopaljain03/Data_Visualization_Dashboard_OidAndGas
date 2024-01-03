@@ -2,6 +2,9 @@
 
 <!-- PROJECT LOGO -->
 <br />
+<div align="center">
+<h3 align="center">Data Visualization Dashboard</h3>
+</div>
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -49,7 +52,7 @@ To run the project locally follow these steps:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/kopaljain03/Data_Visualization_Dashboard_OidAndGas.git
    ```
 2. Install NPM packages
    ```sh
