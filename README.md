@@ -29,7 +29,7 @@
 
 ## About The Project
 
-This is a data visualization dashoboard app where in
+This is a data visualization dashoboard app where in user can see bar graphs , interaction graphs and geographical graphs of various
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -39,7 +39,8 @@ This is a data visualization dashoboard app where in
 - React
 - Material UI
 - SQLAlchemy
-
+- Chart.js
+- Google Charts
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
